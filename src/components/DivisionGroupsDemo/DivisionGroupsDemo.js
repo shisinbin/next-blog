@@ -86,8 +86,37 @@ function DivisionGroupsDemo({
             <p className={styles.remainderHeading}>Remainder Area</p>
 
             {range(remainder).map((index) => {
-              return <div key={index} className={styles.item} />;
+              const layoutId = `${id}-${numOfItems - 1 - index}`;
+              return (
+                <motion.div
+                  key={layoutId}
+                  className={styles.item}
+                  layoutId={layoutId}
+                >
+                  {numOfItems - 1 - index}
+                </motion.div>
+              );
             })}
+            {/* Alternate approach from Josh:
+
+              range(totalNumInGroups, numOfItems)
+              .reverse()
+              .map((index) => {
+                const layoutId = `${id}-${index}`;
+
+                return (
+                  <motion.div
+                    key={layoutId}
+                    layoutId={layoutId}
+                    className={styles.item}
+                  />
+                );
+              })
+
+              1. makes use of the range utility
+              2. totalNumInGroups is derived earlier (= numOfGroups * numOfItemsPerGroup)
+              3. uses reverse() to switch the order of the array that is mapped over
+            */}
           </div>
         )}
 
