@@ -1,10 +1,10 @@
 # Blog Project
+
 ## Joy of React, Project III
 
 In this project, we'll build an interactive MDX-based blog using Next.js 14 (App Router):
 
 ![Screenshot of the final product](/docs/end-result.png)
-
 
 ## Getting Started
 
@@ -34,6 +34,7 @@ npm run new-component [TheNewComponentName]
 ## Troubleshooting
 
 - When you run a dev server, you may notice a warning: _You have enabled experimental feature (outputFileTracingIncludes)_. This warning can safely be ignored. `outputFileTracingIncludes` is a configuration option required to make sure that our MDX files are included when deploying our application to Vercel.
+
   - If you're curious about this, you can learn more [in Module 6 of the course](https://courses.joshwcomeau.com/joy-of-react/06-full-stack-react/07.01-rendering-strategies-exercises#failed-vercel-deploys)
 
 - If the dev server seems to be stuck on a stale error, and restarting the dev server doesn't help, you can clear Next's cache by deleting the `.next/cache` subdirectory. Don't worry about losing anything important: everything inside the `.next` directory is derived from the rest of the codebase.
@@ -42,7 +43,6 @@ npm run new-component [TheNewComponentName]
 
 - Please make sure you're using Node.js version 16.14 or higher. This is the minimum Node version required by Next.js.
   - You can find your current Node version by running `node -v` in a terminal. If the value is less than 16.14, you'll want to upgrade Node to the [current LTS (Long Term Support) version](https://nodejs.org/en).
-
 
 ---
 
@@ -165,7 +165,6 @@ The “Understanding the JavaScript Modulo Operator” blog post makes use of tw
 
 **This is a significant challenge.** To help keep things a bit more manageable, we'll break this exercise up into 3 parts.
 
-
 ### Exercise 5A: Rendering embedded components
 
 First thing's first, we need to get this component rendering!
@@ -175,7 +174,7 @@ Inside the `javascript-modulo-operator.mdx` file, you'll notice that some code h
 ```md
 **TODO: Uncomment DivisionGroupsDemo**
 
-{/* <DivisionGroupsDemo /> */}
+{/_ <DivisionGroupsDemo /> _/}
 ```
 
 If you uncomment this code, you'll get an error telling you that next-mdx-remote doesn't know how to resolve the `DivisionGroupsDemo`.
@@ -194,7 +193,6 @@ This component exists, and you can find it in `/src/components/DivisionGroupsDem
 - [“MDX in Next.js” lesson](https://courses.joshwcomeau.com/joy-of-react/project-blog/01.02-mdx-in-next)
 - [next-mdx-remote docs](https://github.com/hashicorp/next-mdx-remote#custom-components)
 - [“Lazy Loading in Next”](https://courses.joshwcomeau.com/joy-of-react/06-full-stack-react/10.01-lazy-loading-in-next)
-
 
 ### Exercise 5B: Animations with Framer Motion
 
@@ -220,7 +218,6 @@ Let's implement some _layout animations_, so that the pink circles being grouped
 - [“Working With Groups” lesson](https://courses.joshwcomeau.com/joy-of-react/07-framer-motion/04.01-layout-groups)
 - [“Motion Accessibility” lesson](https://courses.joshwcomeau.com/joy-of-react/07-framer-motion/05-accessibility)
 
-
 ### Exercise 5C: Remainder area
 
 If you keep scrolling down inside `javascript-modulo-operator.mdx`, you'll notice another instance of `DivisionGroupsDemo` which has been commented out:
@@ -228,7 +225,7 @@ If you keep scrolling down inside `javascript-modulo-operator.mdx`, you'll notic
 ```md
 **TODO: Uncomment DivisionGroupsDemo**
 
-{/* <DivisionGroupsDemo includeRemainderArea={true} numOfItems={11} initialNumOfGroups={4} /> */}
+{/_ <DivisionGroupsDemo includeRemainderArea={true} numOfItems={11} initialNumOfGroups={4} /> _/}
 ```
 
 If you haven't already, you can uncomment this second `DivisionGroupsDemo` element. Your mission in this final part of the exercise is to ensure that the layout animations continue working as expected:
@@ -240,7 +237,6 @@ If you haven't already, you can uncomment this second `DivisionGroupsDemo` eleme
 ![Screen recording showing how elements should stack in the Remainder Area](/docs/division-groups-remainder-stack-direction.gif)
 
 **NOTE:** to help illustrate the difference, I've given the items different colors/shapes in this GIF. You don't need to incorporate this change; your items should all be pink circles.
-
 
 **Acceptance Criteria:**
 
@@ -301,9 +297,7 @@ Inside the root layout (`/src/app/layout.js`), you'll see that the theme is curr
 
 - [“Dark Mode” lesson](https://courses.joshwcomeau.com/joy-of-react/06-full-stack-react/11-dark-mode)
 
-
 ---
-
 
 ## Stretch goals
 
@@ -403,3 +397,23 @@ From this point onwards, it's up to you what you want to do. Here are some sugge
 If you've been thinking about starting a developer blog, this project should serve as an excellent foundation for you to build upon. Just be sure to abide by the conditions in the [LICENSE.md file](https://github.com/joy-of-react/project-blog/blob/main/LICENSE.md).
 
 I can't wait to see where you take it!
+
+## Note to self
+
+- The Node-file manipulation stuff in `file-helpers.js` might be worth exploring.
+
+- Using `React.cache` is useful to do within a component that calls an (asynchronous?) function more than once.
+
+- Metadata API is pretty nifty.
+
+- Customising tags used in an MDX file when using the `MDXRemote` package, and implementing a sensible organisation approach.
+
+- Lazily-loading packages and organising code in a cool way. The 'facade' pattern, principle of least privilege, thin wrapper components, using the `import` function, etc.
+
+- Then a bunch of things involving Framer Motion - cannot summarise here, need to review material and probably do a lot of trail and error to figure out best approach for certain scenarios. But some things worth mentioning for future reference - if you have a group of things then you need to figure out some way to keep track of them, fungible/non-fungible approaches.
+
+- Respecting motion preferences approach with a thin wrapper component.
+
+- Light/dark mode, which I covered in better detail in an earlier repo.
+
+Everything in notes.
