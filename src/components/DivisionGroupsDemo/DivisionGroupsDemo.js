@@ -92,9 +92,7 @@ function DivisionGroupsDemo({
                   key={layoutId}
                   className={styles.item}
                   layoutId={layoutId}
-                >
-                  {numOfItems - 1 - index}
-                </motion.div>
+                />
               );
             })}
             {/* Alternate approach from Josh:
